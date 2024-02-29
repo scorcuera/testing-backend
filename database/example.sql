@@ -1,4 +1,5 @@
 create database task_manager_db;
+create database task_manager_db_test;
 
 use task_manager_db;
 

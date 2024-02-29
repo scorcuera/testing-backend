@@ -12,8 +12,12 @@ const taskController = {
     },
     createTask: async (req: Request, res: Response) => {
         try {
+            if (!req.body || Object.keys(req.body).length === 0) {
+                return res.status(400).json('Something went wrong with client request');
+            }
             await Task.createTask(req.body);
-            res.status(200).json('Task created succesfully');
+            res.status(201).json('Task created succesfully');
+            //manejo de errores
         } catch (error) {
             res.status(500).json('Internal server error');
         }
